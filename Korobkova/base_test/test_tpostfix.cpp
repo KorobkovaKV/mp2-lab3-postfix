@@ -6,14 +6,14 @@ TEST(TPostfix, can_create_postfix)
   ASSERT_NO_THROW(TPostfix p);
 }
 
-TEST(TPostfix, convert_infix_to_postfix)		//преобразование
+TEST(TPostfix, convert_infix_to_postfix)		//ДЏД‘ДєГ®ГЎД‘Е•Г§Г®ГўЕ•Г­ДЌДє
 {
 	TPostfix v("a+b*c");
 	v.ToPostfix();
-	EXPECT_EQ(p.GetPostfix(), "bc*a+");
+	EXPECT_EQ(v.GetPostfix(), "bc*a+");
 }
 
-TEST(TPostfix, convert_equal_expression)			//равенство одинаковых выражений
+TEST(TPostfix, convert_equal_expression)			//Д‘Е•ГўДєГ­Е„Е€ГўГ® Г®Г¤ДЌГ­Е•Д™Г®ГўЕ±Е‘ ГўЕ±Д‘Е•Д‡ДєГ­ДЌГ©
 {
 	TPostfix v("(a+b*c)");
 	v.ToPostfix();
@@ -22,14 +22,14 @@ TEST(TPostfix, convert_equal_expression)			//равенство одинаковых выражений
 	EXPECT_EQ(v.GetPostfix(), n.GetPostfix());
 }
 
-TEST(TPostfix, calculation_accuary)					//корректность вычисления
+TEST(TPostfix, calculation_accuary)					//Д™Г®Д‘Д‘ДєД™Е€Г­Г®Е„Е€Гј ГўЕ±Г·ДЌЕ„Г«ДєГ­ДЌЛ™
 {
 	TPostfix v("2+2*2");
 	v.ToPostfix();
-	EXPECT_EQ(p.Calculate(), 6);
+	EXPECT_EQ(v.Calculate(), 6);
 }
 
-TEST(TPostfix, convert_infix_with_brackets)		//правильная обработка выражений со скобками
+TEST(TPostfix, convert_infix_with_brackets)		//ДЏД‘Е•ГўДЌГ«ГјГ­Е•Л™ Г®ГЎД‘Е•ГЎГ®Е€Д™Е• ГўЕ±Д‘Е•Д‡ДєГ­ДЌГ© Е„Г® Е„Д™Г®ГЎД™Е•Д›ДЌ
 {
 	TPostfix v("(a+b)*c+d");
 	v.ToPostfix();
