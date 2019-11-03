@@ -1,9 +1,10 @@
 #include "stack.h"
 #include <gtest.h>
 
+using namespace std;
 TEST(TStack, can_create_stack_with_positive_length)
 {
-  ASSERT_NO_THROW(TStack<int> st(5));
+	ASSERT_NO_THROW(TStack<int> st(5));
 }
 
 TEST(TStack, cant_create_too_large_size_of_stack)
@@ -12,21 +13,21 @@ TEST(TStack, cant_create_too_large_size_of_stack)
 }
 
 TEST(TStack, throws_when_create_stack_with_negative_length)
-{	
+{
 	ASSERT_ANY_THROW(TStack<int> st(-5));
 }
 
 TEST(TStack, not_can_pop_if_stack_empty)
 {
 	TStack<int> STACK(3);							//пустой стэк
-	ASSERT_ANY_THROW(STACK.POP_El(1));				//хоти взять единицу из пустого стэка
+	ASSERT_ANY_THROW(STACK.POP_El());				//хоти взять единицу из пустого стэка
 }
 
 TEST(TStack, not_can_push_if_stack_full)
 {
 	TStack<int> STACK(3);
 	for (int k = 0; k < 3; k++)			//заполнили единичками
-		st.push(1);						
+		STACK.PUSH_El(1);
 	ASSERT_ANY_THROW(STACK.PUSH_El(4));
 }
 
@@ -34,13 +35,13 @@ TEST(TStack, can_push_and_pop_element)
 {
 	TStack<int> STACK(4);							//пустой стэк
 	STACK.PUSH_El(1);
-	EXPECT_EQ(1, STACK.POP_El());						//проверяем, что эта единица лежит в стэке
+	EXPECT_EQ(STACK.POP_El(), 1);						//проверяем, что эта единица лежит в стэке
 }
 
 TEST(TStack, full_is_correct_1)
 {
 	TStack<int> STACK(4);						//пустой стэк
-	EXPECT_EQ(STACK.Full(); , false);						//стек пока не заполнен, значит false ждем
+	EXPECT_EQ(STACK.Full(), false);						//стек пока не заполнен, значит false ждем
 }
 
 TEST(TStack, full_is_correct_2)
@@ -53,7 +54,7 @@ TEST(TStack, full_is_correct_2)
 TEST(TStack, empty_is_correct_1)
 {
 	TStack<int> STACK(4);						//пустой стэк
-	EXPECT_EQ(STACK.Empty();, true);						//стек пока не заполнен, значит true ждем
+	EXPECT_EQ(STACK.Empty(), true);						//стек пока не заполнен, значит true ждем
 }
 
 TEST(TStack, empty_is_correct_2)

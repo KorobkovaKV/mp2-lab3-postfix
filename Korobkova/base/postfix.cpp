@@ -32,7 +32,7 @@ string TPostfix::ToPostfix()
 		}
 		if (infix[i] == '(')			//если ( , то в стэк
 		{
-			STACK.PUSH_El(infix[i])
+			STACK.PUSH_El(infix[i]);
 		}
 		if (infix[i] == ')')			// если ), то всё из стэка в постфикс
 		{
@@ -75,7 +75,7 @@ string TPostfix::ToPostfix()
 					}
 					STACK.PUSH_El(infix[i]);
 				}
-				
+
 			}
 		}
 
@@ -96,14 +96,14 @@ double TPostfix::Calculate()
 	int LEN = postfix.length();							//размер постф
 	TStack<char> STACK(MaxStackSize);
 	string nameArguments;								//массив имен
-	double *Arguments = new double[length];				//массив значений
-	
+	double *Arguments = new double[LEN];				//массив значений
+
 	for (int i = 0; i < LEN; i++)					//проходимся по postfix
 	{
 		bool IsNotOperation;
 		for (int k = 0; k < 6; k++)				// если не операция
 		{
-			if (postfix[i] != OPERATIONS[k])
+			if (postfix[i] != operations[k])
 			{
 				IsNotOperation = true;					//это не операция
 			}
@@ -149,15 +149,15 @@ double TPostfix::Calculate()
 				}
 				z = stoi(NUMBER);										//преобразует строку в число
 			}
-			STACK.PUSH_El(p)										//положили в стэк
+			STACK.PUSH_El(z);										//положили в стэк
 		}
 		else if (IsNotOperation == false)
 		{
 			double arg1, arg2, Res;
-			
-			arg2 = res.pop();							//Взяли из стека последний элемент
-			arg1 = res.pop();							//Взяли из стека предпоследний элемент
-			
+
+			arg2 = STACK.POP_El();							//Взяли из стека последний элемент
+			arg1 = STACK.POP_El();							//Взяли из стека предпоследний элемент
+
 			switch (postfix[i])							//определяем операцию
 			{
 			case '+':										//если +
